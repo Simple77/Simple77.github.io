@@ -1,0 +1,23 @@
+p, h1, h2, h3 {
+  margin: 0;
+}
+html, body, #app {
+  height: 100%;
+}
+.fixed-navbar {
+  height: 46px;
+}
+.van-nav-bar {
+  box-shadow: 0 0 5px #888;  
+}
+.van-tabbar--fixed {
+  box-shadow: 0 0 1px inset #eee;
+}
+.van-loading.loading-style {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  background: rgba(0, 0, 0, .5);
+  padding: 20px;
+  border-radius: 8px;
+}
