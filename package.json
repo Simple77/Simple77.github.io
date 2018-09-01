@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A Vue.js project",
   "author": "simple77 <532722256@qq.com>",
+  "homepage": "https://simple77.github.io/cnode/",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
