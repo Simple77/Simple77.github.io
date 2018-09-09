@@ -44,4 +44,15 @@ const message = [
   }
 ]
 
-export { category, message }
+const recentTabs = [
+  {
+    id: 0,
+    value: '最近话题'
+  },
+  {
+    id: 1,
+    value: '最近评论'
+  }
+]
+
+export { category, message, recentTabs }

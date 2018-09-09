@@ -9,6 +9,11 @@ import User from '../views/User.vue'
 import Login from '../views/Login.vue'
 import TopicDetail from '../views/TopicDetail.vue'
 import Comments from '../views/Comments.vue'
+import PersonCenter from '../views/PersonCenter.vue'
+import MyCollection from '../views/MyCollection.vue'
+import CreateTopic from '../views/CreateTopic.vue'
+import MyTopics from '../views/MyTopics.vue'
+
 
 Vue.use(VueRouter)
 
@@ -18,22 +23,48 @@ const routes = [
     component: Index,
     children: [
       {
-        path: '/', component: Home 
+        path: '/', 
+        component: Home, 
       },
       {
-        path: 'category', component: Category
+        path: 'category', 
+        component: Category,
       },
       {
-        path: 'message', component: Message
+        path: 'message', 
+        component: Message,
       },
       {
-        path: 'user', component: User
+        path: 'user', 
+        component: User,
+      }
+    ]
+  },
+  {
+    path: '/user/:username',
+    component: PersonCenter,
+    props: true,
+    name: 'username',
+    children: [
+      {
+        path: 'myTopics',
+        component: MyTopics,
+        props: true,
+      },
+      {
+        path: 'collection',
+        component: MyCollection,
+        props: true,
+      },
+      {
+        path: 'createTopic',
+        component: CreateTopic,
       }
     ]
   },
   {
     path: '/login', 
-    component: Login
+    component: Login,
   },
   {
     path: '/topic/:id',
@@ -42,7 +73,7 @@ const routes = [
     children: [
       {
         path: 'reply',
-        component: Comments
+        component: Comments,
       }
     ]
   }

@@ -25,6 +25,7 @@ import {
   CellGroup,
   Cell,
   Toast,
+  Dialog,
  } from 'vant'
 
 Vue.use(NavBar)
@@ -41,6 +42,7 @@ Vue.use(NavBar)
  .use(CellGroup)
  .use(Cell)
  .use(Toast)
+ .use(Dialog)
 
 
 

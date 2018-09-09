@@ -40,20 +40,22 @@ export default {
     return {
       messageList: message,
       currentTab: 0,
-      infoCollection: []
     }
   },
   computed: {
     isLogin() {
       return this.$store.state.login.isLogin
     },
+    infoCollection() {
+      return [this.$store.state.message['has_read_messages'], this.$store.state.message['hasnot_read_messages']]
+    }
   },
   methods: {
     getCurrent(e) {
       this.currentTab = e
     },
     goLogin() {
-      this.$router.push({
+      this.$router.replace({
         path: '/login', 
         query: {
           redirect: this.$router.history.current.fullPath
@@ -70,7 +72,10 @@ export default {
       }) 
       .then(res => {
         let info = res.data.data
-        this.infoCollection = [info['has_read_messages'], info['hasnot_read_messages']]
+        this.$store.commit('message/setMessage', {
+          'has_read_messages': info['has_read_messages'],
+          'hasnot_read_messages': info['hasnot_read_messages'],
+          })
       }) 
       .catch(err => {
         this.$toast.fail(err)

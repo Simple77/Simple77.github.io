@@ -24,7 +24,7 @@
         </div>
       </div>
 
-      <SwitchBar :text="text" @goto="gotoPath" class="detail-switch-bar">></SwitchBar>
+      <SwitchBar :text="text" @goto="gotoPath" class="detail-switch-bar"></SwitchBar>
 
       <transition name="slide">
         <router-view></router-view>
@@ -87,7 +87,7 @@ export default {
       }
     },
     goLogin() {
-      this.$router.push({
+      this.$router.replace({
         path: '/login', 
         query: {
           redirect: this.$route.fullPath

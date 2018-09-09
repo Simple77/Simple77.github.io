@@ -1,24 +1,16 @@
 <template>
   <div class="home">
     
-    <div class="fixed-navbar">
-      <!-- <van-nav-bar 
-        fixed
-        title="CNode.js中文社区"
-        @click-right="toGithub">
-          <van-icon name="wap-home" slot="right" />
-        </van-nav-bar> -->
-        <van-nav-bar 
-          fixed
-          title="CNode.js中文社区">
-          </van-nav-bar>
-    </div>
+    <van-nav-bar 
+      title="CNode.js中文社区"
+      @click-right="toGithub">
+        <van-icon name="wap-home" slot="right" />
+      </van-nav-bar>
       
+      <div class="list-wrap" @scroll="onScroll">
+        <TopicList listType="all"></TopicList>
+      </div>
 
-      <TopicList listType="all"></TopicList>
-
-    
-     
   </div>
 </template>
 
@@ -34,16 +26,20 @@ export default {
   data() {
     return {
       isLoading: false,
-      pos: 0
+      pos: 0,
+      target: ''
     }
   },
   activated() {
     
   },
   methods: {
-    // toGithub() {
-    //   location = 'https://github.com/simple77/'  
-    // }
+    toGithub() {
+      location = 'https://github.com/simple77/cnode'  
+    },
+    onScroll(e) {
+      this.target = e.target
+    }
   },
   created() {
     
@@ -52,16 +48,34 @@ export default {
     
   },
   beforeRouteLeave(to, from, next) {
-    this.pos = document.body.scrollTop + document.documentElement.scrollTop  
+    if(this.target) {
+      this.pos = this.target.scrollTop
+    }
     next()
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      window.scrollTo(0, vm.pos)
+      if(vm.target) {
+        vm.target.scrollTo(0, vm.pos)
+      }
     })
   },  
 }
 </script>
+
+<style lang="scss" scoped>
+  .home {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: calc(100% - 50px)
+  }
+  .list-wrap {
+    flex: 1;
+    overflow-y: auto;
+  }
+</style>
+
 
 
 

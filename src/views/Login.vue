@@ -36,26 +36,25 @@ export default {
         this.$toast.fail('请输入Access Token')
         return
       }
-      new Promise((resolve, reject) => {
-        this.$axios.post('/accesstoken', {
-          accesstoken: this.accesstoken 
+      this.$axios.post('/accesstoken', {
+        accesstoken: this.accesstoken 
+      })
+      .then(res => {
+        console.log(res)
+        sessionStorage.token = this.accesstoken
+        let user = {
+          loginname: res.data.loginname,
+          id: res.data.id,
+          avatar_url: res.data.avatar_url 
+        }
+        sessionStorage.user = JSON.stringify(user)
+        this.$store.commit('login/setLogin', {
+          user: user
         })
-        .then(res => {
-          console.log(res)
-          sessionStorage.token = this.accesstoken
-          this.$store.commit('login/setLogin', {
-            user: {
-              loginname: res.loginname,
-              id: res.id,
-              avatar_url: res.avatar_url
-            }
-          })
-          this.$router.replace(this.$route.query.redirect || '/')
-          resolve()
-        })
-        .catch(err => {
-          this.$toast.fail(err)  
-        })
+        this.$router.replace(this.$route.query.redirect || '/')
+      })
+      .catch(err => {
+        this.$toast.fail(err)  
       })
       
     },

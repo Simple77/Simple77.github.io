@@ -20,7 +20,7 @@ let timeDistanceNow = (date) => {
     let distanceMinute = Math.floor(distanceTime / minuteOfMillisecond);
     return `${distanceMinute}分钟前`  
   } else {
-    return ''
+    return '刚刚'
   }
 }
 

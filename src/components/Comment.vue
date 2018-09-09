@@ -31,7 +31,7 @@ export default {
       }
     },
     goLogin() {
-      this.$router.push({
+      this.$router.replace({
         path: '/login', 
         query: {
           redirect: this.$route.fullPath

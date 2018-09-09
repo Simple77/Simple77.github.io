@@ -1,10 +1,10 @@
 //initial state
 const state = {
-  isLogin: sessionStorage.token ? true : false,
+  isLogin: (sessionStorage.token ? true : false),
   user: {
-    avatar_url: '',
-    loginname: '',
-    id: '',
+    avatar_url: (sessionStorage.user ? JSON.parse(sessionStorage.user).avatar_url : ''),
+    loginname: (sessionStorage.user ? JSON.parse(sessionStorage.user).loginname : ''),
+    id: (sessionStorage.user ? JSON.parse(sessionStorage.user).id : ''),
   },
 }
 
@@ -22,7 +22,7 @@ const actions = {
 const mutations = {
   setLogin(state, payload) {
     state.isLogin = true
-    state.user = payload
+    state.user = payload.user
   }  
 }
 
