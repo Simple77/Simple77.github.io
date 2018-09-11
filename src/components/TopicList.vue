@@ -18,14 +18,18 @@ export default {
   },
   props: {
     listType: String,
+    pullList: Array,
   },
   data() {
     return {
       loading: true,
       finished: false,
-      list: [],
       page: 1,
+      list: [],
     }
+  },
+  computed: {
+    
   },
   methods: {
     onLoad() {
@@ -50,10 +54,17 @@ export default {
           this.finished = true
         }
       })
+      .catch(err => {
+        this.$toast.fail(err)
+      })
     }
   },
   created() {
-    this.onLoad()
+    if(this.pullList.length === 0) {
+      this.onLoad()
+    } else {
+      this.list.push(...this.pullList)
+    }
   }
 }
 </script>

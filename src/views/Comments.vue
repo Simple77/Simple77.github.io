@@ -75,10 +75,6 @@ export default {
     display: flex;
     flex-direction: column;
   }
-  .switch-bar.comment-switch-bar {
-    position: static;
-    margin-top: 1px;
-  }
   .main {
     width: 100%;
     flex: 1;

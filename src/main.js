@@ -26,6 +26,7 @@ import {
   Cell,
   Toast,
   Dialog,
+  PullRefresh,
  } from 'vant'
 
 Vue.use(NavBar)
@@ -43,6 +44,7 @@ Vue.use(NavBar)
  .use(Cell)
  .use(Toast)
  .use(Dialog)
+ .use(PullRefresh)
 
 
 

@@ -5,6 +5,7 @@
         <TopicList 
           v-for="(item, index) of categoryList" :key="index" 
           v-if="index === currentTab" 
+          :pullList="pullList"
           :listType="item.name">
           </TopicList>
       </keep-alive>
@@ -22,6 +23,7 @@ export default {
     return {
       categoryList: category,
       currentTab: 0,
+      pullList: [],
     }
   },
   components: {

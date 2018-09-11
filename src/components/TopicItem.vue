@@ -63,7 +63,7 @@ export default {
 <style lang="scss" scoped>
   .topic-item {
     overflow: hidden;
-    padding: 20px;
+    padding: 10px 20px;
     background: white;
     margin-bottom: 20px;
     box-shadow: 0 0 4px inset #bec5be;

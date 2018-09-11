@@ -1,7 +1,7 @@
 <template>
   <div class="switch-bar">
-    <input type="text" v-model.trim="comment" :placeholder="placeholder">
-    <button @click="goto">{{value}}</button>
+    <input type="text" v-model.trim="comment" :placeholder="placeholder"><button @click="goto">{{value}}</button>
+    
   </div>
 </template>
 
@@ -37,23 +37,25 @@ export default {
 
 <style lang="scss" scoped>
   .switch-bar {
-    position: fixed;
-    bottom: 0;
     height: 46px;
-    line-height: 46px;
+    // line-height: 46px;
     display: flex;
     width: 100%;
-    border-top: 1px solid #eee;
+    box-sizing: border-box;
   }  
   input {
-    flex: auto;
+    flex: 1;
     padding-left: 10px;
+    border: 1px solid #eee;
+    box-sizing: border-box;
+    height: 46px;
   }
   button {
-    min-width: 100px;
+    width: 100px;
     border: none;
     background: #38f;
     color: #fff;
+    height: 46px;
   }
 </style>
 

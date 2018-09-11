@@ -32,6 +32,10 @@ export default {
     top: 0;
     z-index: -1;
   }
+  input, textarea {
+    background: transparent;
+    border-style: none;
+  }
 </style>
 
 

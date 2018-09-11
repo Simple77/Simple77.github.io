@@ -68,14 +68,30 @@ export default {
 
 <style lang="scss" scoped>
   .form {
-    margin-top: 300px;
+    margin-top: 260px;
     padding: 0 28px;
   }
+  .van-cell {
+    padding-left: 0;
+    padding-right: 0;
+  }
   input {
-    border: none;
-    line-height: 46px;
+    display: block;
+    line-height: 36px;
     font-size: 16px;
     width: 100%;
+    border: none;
+    position: relative;
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 100%;
+      background: #ddd;
+      position: absolute;
+      bottom: 0;
+      transform: scaleY(0.5);
+    }
   }
   button {
     width: 100%;

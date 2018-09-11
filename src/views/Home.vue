@@ -6,11 +6,13 @@
       @click-right="toGithub">
         <van-icon name="wap-home" slot="right" />
       </van-nav-bar>
-      
-      <div class="list-wrap" @scroll="onScroll">
-        <TopicList listType="all"></TopicList>
-      </div>
 
+      <div class="list-wrap" @scroll="onScroll">
+        <van-pull-refresh v-model="pullLoading" @refresh="onRefresh">
+          <TopicList :pullList="pullList" listType="all"></TopicList>
+        </van-pull-refresh>
+      </div>
+      
   </div>
 </template>
 
@@ -27,7 +29,9 @@ export default {
     return {
       isLoading: false,
       pos: 0,
-      target: ''
+      target: '',
+      pullLoading: false,
+      pullList: [],
     }
   },
   activated() {
@@ -39,7 +43,24 @@ export default {
     },
     onScroll(e) {
       this.target = e.target
-    }
+    },
+    onRefresh() {
+      this.$axios.get('/topics', {
+        params: {
+          page: 1,
+          limit: 20,
+          tab: 'all',
+        }
+      })
+      .then(res => {
+        this.pullList =  res.data.data
+        this.$toast('下拉刷新成功')
+        this.pullLoading = false 
+      })
+      .catch(err => {
+        this.$toast.fail(err)
+      })
+    },
   },
   created() {
     

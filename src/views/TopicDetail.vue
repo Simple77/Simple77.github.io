@@ -130,10 +130,6 @@ export default {
     width: 100%;
     overflow-y: scroll;
   }
-  .switch-bar.detail-switch-bar {
-    position: static;
-    margin-top: 1px;
-  }
   .head {
     background: #fff;
     padding: 10px 20px;

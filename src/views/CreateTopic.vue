@@ -27,7 +27,7 @@
         <textarea class="form-input" name="" id="" required v-model.trim.lazy="content" placeholder="请输入内容"></textarea>
       </div>
       <van-button v-if="submitting" type="primary" disabled>提交中...</van-button>
-      <van-button v-else type="primary" @click="submit">提交</van-button>
+      <van-button v-else type="primary" @click.prevent="submit">提交</van-button>
     </form>
   </div>
 </template>
@@ -54,7 +54,7 @@ export default {
       this.$router.go(-1)
     },
     submit() {
-      if(!this.title || this.tab === '' || !this.content) {
+      if(!(this.title & this.tab !== '' & this.content)) {
         return
       }
       this.submitting = true
@@ -105,8 +105,13 @@ export default {
   .form-group {
     display: flex;
     margin: 10px;
+    height: 26px;
+    line-height: 26px;
     label {
       width: 50px;
+    }
+    input, textarea {
+      border: 1px solid #ddd;
     }
     .form-input {
       flex: 1;
