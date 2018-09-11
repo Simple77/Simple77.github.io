@@ -10,7 +10,7 @@
         </van-nav-bar>
     </div>
 
-    <form class="content-wrap">
+    <form class="content-wrap" @submit.prevent="onSubmit">
       <div class="form-group">
         <label for="">标题：</label>
         <input class="form-input" type="text" required v-model.trim.lazy="title">
@@ -27,7 +27,7 @@
         <textarea class="form-input" name="" id="" required v-model.trim.lazy="content" placeholder="请输入内容"></textarea>
       </div>
       <van-button v-if="submitting" type="primary" disabled>提交中...</van-button>
-      <van-button v-else type="primary" @click.prevent="submit">提交</van-button>
+      <van-button v-else type="primary">提交</van-button>
     </form>
   </div>
 </template>
@@ -53,8 +53,8 @@ export default {
     back() {
       this.$router.go(-1)
     },
-    submit() {
-      if(!(this.title & this.tab !== '' & this.content)) {
+    onSubmit() {
+      if(!(this.title && this.tab && this.content)) {
         return
       }
       this.submitting = true
